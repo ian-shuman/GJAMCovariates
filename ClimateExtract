@@ -1,0 +1,293 @@
+## Extracting Climate Variables for Section Corners 
+## Author: I Shuman and K Heilman
+## Date modified: 05 October 2022
+
+rm(list=ls(all=TRUE)) 
+
+#Load libraries -----------
+
+library(plyr)
+library(raster)
+library(data.table)
+library(rgdal)
+library(reshape2)
+library(ggplot2)
+
+setwd("D:/Shuman Covariates 2022/Climate Covariates")
+
+## List files to loop over
+files <- list.files("Indiana Points/")
+for(i in files) {
+
+pointname = paste0(i)
+basename = substring(pointname, 1, (nchar(pointname)-11))
+csvname= paste0(basename, "_Points.csv")
+
+##Code for calculating monthly temperature means and extracting the to the point coordinates for the historical PRISM data from 1895-1925##
+setwd("D:/Shuman Covariates 2022/Climate Covariates")
+IL_StudyArea_Points <- read.csv(csvname)
+coordinates(IL_StudyArea_Points) <- ~x + y
+proj4string(IL_StudyArea_Points) <- '+init=epsg:3175'
+TransPoints<- spTransform(IL_StudyArea_Points, crs('+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0 '))
+
+TransPoints<- as.data.frame(TransPoints)
+
+years <- 1895:1925
+yrs <- "1895-1925"
+
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Mean Temperature 1895 - 1925")
+
+filenames <- list.files(pattern=paste(".*_",".*\\.bil$", sep = ""))
+
+# use substring to index filenames that match the years designated:
+
+filenames <- filenames [substring(filenames, first = 26, last = 29) %in% years]
+filenames
+s <- stack(filenames) 
+t <- crop(s, extent(c(-97.24357, -82.40131 , 37.1442 , 49.38583))) #crop to the extent of indiana & illinois 
+s <- projectRaster(t, crs= '+init=epsg:3175') # project in great lakes albers
+y <- data.frame(rasterToPoints(s)) #covert to dataframe
+years <- rep(years, each = 12)
+mo <- rep(c('Jan', 'Feb', 'Mar', "Apr", "May", 
+            'Jun', "Jul", "Aug", "Sep", "Oct", "Nov","Dec"), 10)  
+
+
+test <- y
+monthly <- test
+yearly <- test
+
+melted.mo <- melt(monthly, id.var = c('x', 'y'))
+melted.mo$yrs <- substring(melted.mo$variable, first = 26, last = 29)
+melted.mo$mos <- substring(melted.mo$variable, first = 30, last = 31)
+full<- dcast(melted.mo, x + y ~ mos, mean , value.var='value', na.rm = TRUE)
+full$Mean <- rowMeans(full[,3:14])
+colnames(full) <- c('x','y','Jan', 'Feb', 'Mar', "Apr", "May", 
+                    'Jun', "Jul", "Aug", "Sep", "Oct", "Nov","Dec",'Mean')
+test <- full
+
+#calculate the CV temperature seasonality:
+#TSI = sd(m1....m12)/Tavgannual *100
+test$cv <- (apply(test[,3:14],1, sd, na.rm = TRUE)/test[,15])*100
+full <- test
+TransPoints <- data.frame(TransPoints)
+
+# for monthly dataset
+# convert to rasterstack
+coordinates(full) <- ~x + y
+gridded(full) <- TRUE
+avgs <- stack(full) 
+
+plot(avgs) #plots averages
+
+
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Mean Temperature 1895 - 1925")
+IL_StudyArea_Points<- as.data.frame(IL_StudyArea_Points)
+avgs.df <- data.frame(raster::extract(avgs, IL_StudyArea_Points[,c("x","y")])) #Extracting based on IL_Prairie1_Points_Practice so that output has xy coordinates in meters
+avgs.df$x <- IL_StudyArea_Points$x
+avgs.df$y <- IL_StudyArea_Points$y
+avgs.df$long <- TransPoints$x #need to add lat and long for use in calculating PET
+avgs.df$lat <- TransPoints$y
+avgs.df
+workingdir <- "/Users/paleolab/ShumanCovariates 2022/Climate Covariates/"
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Indiana Outputs/")
+csvfilename1 = paste0(basename,'_t1895-1925.csv')
+write.csv(avgs.df, csvfilename1, row.names=FALSE, quote=FALSE) 
+
+
+
+#saveRDS(avgs.df, csvfilename1)
+
+
+####################################################################################################################################################################################
+##Code for calculating monthly precipitation means and extracting the to the point coordinates for the historical PRISM data from 1895-1925#########################################
+####################################################################################################################################################################################
+
+setwd("D:/Shuman Covariates 2022/Climate Covariates")
+IL_StudyArea_Points <- read.csv(pointname)
+coordinates(IL_StudyArea_Points) <- ~x + y
+proj4string(IL_StudyArea_Points) <- '+init=epsg:3175'
+TransPoints<- spTransform(IL_StudyArea_Points, crs('+proj=longlat +datum=NAD83 +no_defs +ellps=GRS80 +towgs84=0,0,0 '))
+
+
+
+TransPoints<- as.data.frame(TransPoints)
+
+
+#designate the years we want to extract/ average over
+years <- 1895:1925
+yrs <- "1895-1925"
+
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Mean Precipitation 1895 - 1925")
+
+# this chunk of code reads in the filenames within the PRISM data folder
+filenames <- list.files(pattern=paste(".*_",".*\\.bil$", sep = ""))
+
+# use substring to index filenames that match the years designated:
+
+filenames <- filenames [substring(filenames, first = 24, last = 27) %in% years]
+filenames
+
+s <- stack(filenames) #make all into a raster
+t <- crop(s, extent(c(-97.24357, -82.40131 , 37.1442 , 49.38583))) 
+s <- projectRaster(t, crs='+init=epsg:3175') # project in great lakes albers
+y <- data.frame(rasterToPoints(s)) #covert to dataframe
+years <- rep(years, each = 12)
+mo <- rep(c('Jan', 'Feb', 'Mar', "Apr", "May", 
+            'Jun', "Jul", "Aug", "Sep", "Oct", "Nov","Dec"), 10)  
+
+monthly <- y
+yearly <- y
+
+# melt so that we can calculate the mean total precipitation by month  
+melted.mo <- melt(monthly, id.var = c('x', 'y'))
+melted.mo$yrs <- substring(melted.mo$variable, first = 24, last = 27)
+melted.mo$mos <- substring(melted.mo$variable, first = 28, last = 29)
+
+#calculate means for months
+full<- dcast(melted.mo, x + y ~ mos, mean , value.var='value', na.rm = TRUE)
+full<- data.frame(full)
+full$total <- rowSums(full[,3:14])
+colnames(full) <- c('x','y','Jan', 'Feb', 'Mar', "Apr", "May", 
+                    'Jun', "Jul", "Aug", "Sep", "Oct", "Nov","Dec",'total')
+
+
+# calculate a seasonality index from the monthly precipitatoin
+full$SI <- rowSums(abs(full[,3:14]-(full[,15]/12)))/full[,15]
+#melted.yr <- melt(yearly, id.var = c('x', 'y'))
+write.csv(full, "temporary_meltedppt_1895_1925.csv", row.names=FALSE, quote=FALSE) 
+full
+
+coordinates(full) <- ~x + y
+gridded(full) <- TRUE
+avgs <- stack(full)
+
+
+
+
+
+plot(avgs) #plots the raster averages
+#writeRaster(avgs, "raster_avgs")
+
+IL_StudyArea_Points<- as.data.frame(IL_StudyArea_Points)
+avgs.df <- data.frame(raster::extract(avgs, IL_StudyArea_Points[,c("x","y")]))
+avgs.df$x <- IL_StudyArea_Points$x
+avgs.df$y <- IL_StudyArea_Points$y
+avgs.df
+
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Indiana Outputs/")
+csvfilename1a <- paste0('avgs_', basename,'_ppt1895-1925.csv')
+write.csv(avgs.df, csvfilename1a)
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Mean Precipitation 1895 - 1925")
+
+# kh temporary:
+melt.temp <- melted.mo[!melted.mo$mos %in% "02",] # rn we are missing feb in the PET:
+
+saveRDS(melt.temp, "melt_StudyArea_ppt1895-1925.RDS")
+
+melt.temp$year <- as.numeric(substring(melt.temp$variable, first = 24, last = 27))
+melt.temp.byxy <- dcast(melt.temp, x + y ~  year + mos, mean, value.var = 'value', na.rm = TRUE)
+coordinates(melt.temp.byxy) <- ~x + y
+gridded(melt.temp.byxy) <- TRUE
+avgs <- stack(melt.temp.byxy) 
+
+IL_StudyArea_Points<- as.data.frame(IL_StudyArea_Points)
+
+plot(avgs) #plots the raster averages
+
+avgs.df <- data.frame(raster::extract(avgs, IL_StudyArea_Points[,c("x","y")]))
+avgs.df$x <- IL_StudyArea_Points$x
+avgs.df$y <- IL_StudyArea_Points$y
+
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Indiana Outputs/")
+csvfilename2 = paste0(basename,'_ppt1895-1925.csv')
+
+write.csv(avgs.df, csvfilename2, row.names=FALSE, quote=FALSE)
+
+######################################################################################
+#PET CODE USING THORNTHWAITE()#
+######################################################################################
+
+
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Indiana Outputs/")
+temp_data = read.csv(csvfilename1)
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Mean Temperature 1895 - 1925")
+
+library(SPEI)
+library(tidyverse)
+
+
+data2 = temp_data[,1:12]
+data2$site = seq(1, nrow(data2))
+
+data_new = data2 %>%
+  pivot_longer(cols = Jan:Dec) #pivot data so that it is compatible with thornthwaite() function
+
+colnames(data_new) = c('Site', 'Month', 'Temp')
+
+th = matrix(NA, nrow = max(unique(data_new$Site)), ncol = 12) #make empty matrix to fill with data from the loop
+
+for(i in 1:max(unique(data_new$Site))){
+  th[i,] = thornthwaite(data_new$Temp[data_new$Site == i], temp_data$lat[i])
+}
+
+th <- as.data.frame(th)
+colnames(th) = c('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec')
+th$Mean <-apply(th,1,mean)
+th$x <- temp_data$x
+th$y <- temp_data$y
+th$long <- temp_data$long 
+th$lat <- temp_data$lat
+
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Indiana Outputs/")
+
+csvfilename3 = paste0(basename,'_PET.csv')
+
+write.csv(th, csvfilename3, row.names=FALSE, quote=FALSE)
+
+##########################################################################
+#Calculating P-PET
+##########################################################################
+
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Indiana Outputs/")
+PET <- read.csv(csvfilename3)
+PETjja_unsorted <- PET[,c("Mar","Apr", "May","Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "x", "y")]
+colnames(PETjja_unsorted) <- c("Mar_pet","Apr_pet", "May_pet","Jun_pet", "Jul_pet", "Aug_pet", "Sep_pet", "Oct_pet", "Nov_pet", "x", "y" )
+PETjja <- arrange(PETjja_unsorted, x, y)
+
+
+
+Precip <- read.csv(csvfilename1a)
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Mean Precipitation 1895 - 1925")
+PrJJA_unsorted <- Precip[,c("Mar","Apr", "May","Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "x", "y")]
+colnames(PrJJA_unsorted) <- c("Mar_pr","Apr_pr", "May_pr","Jun_pr", "Jul_pr", "Aug_pr", "Sep_pr", "Oct_pr", "Nov_pr", "x", "y")
+PrJJA <- arrange(PrJJA_unsorted, x, y)
+
+P.PET <- cbind(PrJJA, PETjja)
+
+# now lets calculaate P - PET for Mar - Nov
+P.PET$Mar_ppet <- P.PET$Mar_pr - P.PET$Mar_pet
+P.PET$Apr_ppet <- P.PET$Apr_pr - P.PET$Apr_pet
+P.PET$May_ppet <- P.PET$May_pr - P.PET$May_pet
+P.PET$Jun_ppet <- P.PET$Jun_pr - P.PET$Jun_pet
+P.PET$Jul_ppet <- P.PET$Jul_pr - P.PET$Jul_pet
+P.PET$Aug_ppet <- P.PET$Aug_pr - P.PET$Aug_pet
+P.PET$Sep_ppet <- P.PET$Sep_pr - P.PET$Sep_pet
+P.PET$Oct_ppet <- P.PET$Oct_pr - P.PET$Oct_pet
+P.PET$Nov_ppet <- P.PET$Nov_pr - P.PET$Nov_pet
+
+#Calculate total P-PET for the entire growing season
+P.PET$GS_ppet <- rowSums(P.PET[,3:11], na.rm=TRUE) - rowSums(P.PET[,12:20], na.rm=TRUE)
+
+#ggplot(P.PET, aes(x,y, fill = Jun_ppet))+geom_raster()
+#ggplot(P.PET, aes(x,y, fill = Jul_ppet))+geom_raster()
+#ggplot(P.PET, aes(x,y, fill = Aug_ppet))+geom_raster()
+#ggplot(P.PET, aes(x,y, fill = GS_ppet))+geom_raster()
+
+
+setwd("D:/Shuman Covariates 2022/Climate Covariates/Indiana Outputs/")
+
+csvfilename4 = paste0(basename,'_P.PET.csv')
+
+write.csv(P.PET, csvfilename4)
+
+}
