@@ -1,7 +1,7 @@
 # GJAMCovariates
 Extraction of PLS data and environmental covariates for GJAM analyses
 
-Workflow (although most can be run independently):
+Workflow:
 
 1. Alignmend Code
 2. Climate Extraction Loop
