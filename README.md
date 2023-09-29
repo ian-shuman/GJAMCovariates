@@ -28,6 +28,6 @@ Workflow:
    - Input: PLS corner data and X covariate datq
    - Output: Same files with matching uniqueIDs
 7. Validation Code
-- This code is simply the random number generator used to select which PLS management areas were witheld for out of sample prediction, and then the verification that all vegetation taxa are represented in the data used for model training
-- Input: Vegetation data for the PLS corners, sorted into individual files for each management area
-- Output: None
+   - This code is simply the random number generator used to select which PLS management areas were witheld for out of sample prediction, and then the verification that all vegetation taxa are represented in the data used for model training
+   - Input: Vegetation data for the PLS corners, sorted into individual files for each management area
+   - Output: None
