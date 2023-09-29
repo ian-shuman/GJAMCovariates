@@ -1,4 +1,4 @@
-## Creating a Final CSV For Each Management Area's Corner's which aligns with the covariates extracted
+## Creating a Final CSV For Each Management Area's Corners which aligns with the covariates extracted
 
 ## Author: I Shuman
 ## Date: December 19 2022
