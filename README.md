@@ -36,3 +36,7 @@ Workflow:
    - This code is simply the random number generator used to select which PLS management areas were witheld for out of sample prediction, and then the verification that all vegetation taxa are represented in the data used for model training
    - Input: Vegetation data for the PLS corners, sorted into individual files for each management area
    - Output: None
+7. Conceptual Graphs
+   - This code makes the mock residual correlation graphs used in Figure 1 of the final manuscript
+   - Input: None
+   - Output: Two residual correlation graphs
