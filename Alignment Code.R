@@ -17,6 +17,7 @@ NE_final_corners <- read.csv("Empty Headers.csv")
 
 setwd("D:/Data for Chris/Illinois Covariates/")
 
+#Load in each management area
 covariate_file <- read.csv("IL_Prairie3_Covariate_Data.csv")
 
 #Extract the PLS corners which match up with the desired covariate xy locations
