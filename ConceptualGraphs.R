@@ -15,8 +15,8 @@ rownames(mat1) <- c("Prairie", "Savanna", "Forest")
 mat1[mat1 == 1] <- NA
 
 # Specify color palette
-pal <- c('#364b9a', '#4a7bb7', '#6ea6cd', '#93cae1', '#cde4ef', '#fdb336',
-         '#eaeccc', '#feda8b', '#f67e4b', '#dd3d2d', '#a50026')
+pal <- c('#364b9a', '#4a7bb7', '#6ea6cd', '#93cae1', '#cde4ef', 
+         '#eaeccc', '#feda8b', '#fdb336', '#f67e4b', '#dd3d2d', '#a50026')
 # Plot
 corrplot(mat1, diag = F, type = 'upper', method = c("circle"), tl.col = 'black', col = rev(pal), cl.cex = 1, tl.cex =2.5, cl.align.text = 'l', addgrid.col = NA)
 
