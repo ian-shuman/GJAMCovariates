@@ -20,6 +20,24 @@ pal <- c('#364b9a', '#4a7bb7', '#6ea6cd', '#93cae1', '#cde4ef',
 # Plot
 corrplot(mat1, diag = F, type = 'upper', method = c("circle"), tl.col = 'black', col = rev(pal), cl.cex = 1, tl.cex =2.5, cl.align.text = 'l', addgrid.col = NA)
 
+#Version for  1:1 residual correlations
+mat.data2 <- c(0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05, 0.05)
+
+
+mat2 <- matrix(mat.data2, nrow = 3, ncol = 3)
+#View(mat1)
+colnames(mat2) <- c("Prairie", "Savanna", "Forest")
+rownames(mat2) <- c("Prairie", "Savanna", "Forest")
+# Remove diagonals to improve visualization
+mat2[mat2 == 1] <- NA
+
+# Specify color palette
+
+pal <- c('#364b9a', '#4a7bb7', '#6ea6cd', '#93cae1', '#cde4ef', 
+         '#eaeccc', '#feda8b', '#fdb336', '#f67e4b', '#dd3d2d', '#a50026')
+# Plot
+corrplot(mat2, diag = F, type = 'upper', method = c("circle"), tl.col = 'black', col = rev(pal), cl.cex = 1, tl.cex =2.5, cl.align.text = 'l', addgrid.col = NA)
+
 
 
 
