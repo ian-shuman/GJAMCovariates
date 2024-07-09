@@ -40,3 +40,7 @@ Workflow:
    - This code makes the mock residual correlation graphs used in Figure 1 of the final manuscript
    - Input: None
    - Output: Two residual correlation graphs
+8. Fig1A
+   - This code produces a map of ecosystems using all available PLS data, with outlines of the management areas used in Shuman et al.
+   - Input: Current PLS data from https://paleon.geography.wisc.edu/doku.php/data_and_products:settlement_vegetation and Management Area shapefiles from the Data folder in this   repository
+   - Output: Figure panel 1.A in Shuman et al
