@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE metadata SYSTEM "http://www.fgdc.gov/metadata/fgdc-std-001-1998.dtd">
+<metadata>
+	<idinfo>
+		<citation>
+			<citeinfo>
+				<origin>Bureau of Land Management</origin>
+				<origin>U.S. Forest Service</origin>
+				<pubdate>20040410</pubdate>
+				<title>alt_twnshp</title>
+				<geoform>vector digital data</geoform>
+				<pubinfo>
+					<pubplace>Denver, Colorado</pubplace>
+					<publish>Bureau of Land Management</publish>
+				</pubinfo>
+				<onlink></onlink>
+				<ftname Sync="TRUE">ILTwnshp</ftname></citeinfo>
+		</citation>
+		<descript>
+			<abstract>This layer is based on Geographic Coordinate Data Base (GCDB) coordinate data.  The locations of Public Land Survey System (PLSS) corners, as represented in geographic coordinate pairs, were derived from a variety of source documents, which include U.S. General Land Office and BLM survey plats/notes, as well as survey data obtained from other U.S. Government agencies, private sector survey firms, and local governments. The attributes assigned to PLSS polygons were taken from the BLM's Legal Land Description (LLD) data set, contained within the Legacy Rehost for the year 2000 (LR2000) automated records system. The coordinate data was produced by using control stations of known location, with varying degrees of accuracy, from various sources which include but are not limited to; U.S. Geological Survey (USGS) topological quadrangles and other sources, National Geodetic Survey (NGS) and US Coast &amp; Geodetic Survey (USC&amp;GS) Cooperative Base Network (CBN) control, Federal Base Network control (FBN), and Continuous Operating Reference Stations (CORS), and Global Positioning System (GPS) data, which is then analyzed and adjusted in concert with official survey data for any given geographic area. The Land Survey Information System Data Base (LSIS) data is a useful representation of the geometry and topology of parcels contained within the PLSS, but its application is intended for mapping purposes only. The GCDB data served from LSIS is not a substitute for a legal land survey.</abstract>
+			<purpose>The GCDB Data  was created to provide the BLM and its public with a set of geographic foundation data that accurately portrays the locations of PLSS corners. The GCDB data is based on the best and most current survey records available and uses known geographic positions of control stations within the PLSS network. This data is a key component of the Land Survey Information System (LSIS) framework upon which parcel boundary information will be assembled.</purpose>
+			<langdata Sync="TRUE">en</langdata></descript>
+		<timeperd>
+			<timeinfo>
+				<rngdates>
+					<begdate>18490303</begdate>
+					<enddate>present</enddate>
+				</rngdates>
+				<sngdate><caldate>REQUIRED: The year (and optionally month, or month and day) for which the data set corresponds to the ground.</caldate></sngdate></timeinfo>
+			<current>ground condition</current>
+		</timeperd>
+		<status>
+			<progress>In work</progress>
+			<update>As needed</update>
+		</status>
+		<spdom>
+			<bounding>
+				<westbc>
+-152.790746</westbc>
+				<eastbc>
+-80.939228</eastbc>
+				<northbc>
+61.817779</northbc>
+				<southbc>
+29.901336</southbc>
+			</bounding>
+			<lboundng><leftbc Sync="TRUE">-91.615603</leftbc><rightbc Sync="TRUE">-87.460305</rightbc><bottombc Sync="TRUE">36.981585</bottombc><topbc Sync="TRUE">42.595402</topbc></lboundng></spdom>
+		<keywords>
+			<theme>
+				<themekt>None</themekt>
+				<themekey>General Land Office</themekey>
+				<themekey>GLO</themekey>
+				<themekey>Bureau of Land Management</themekey>
+				<themekey>BLM</themekey>
+				<themekey>Public Land Survey System</themekey>
+				<themekey>PLSS</themekey>
+				<themekey>Geographic Coordinate Data Base</themekey>
+				<themekey>GCDB</themekey>
+				<themekey>National Spatial Data Infrastructure</themekey>
+				<themekey>NSDI</themekey>
+				<themekey>Land Information System</themekey>
+				<themekey>LIS</themekey>
+				<themekey>Land Survey Information</themekey>
+				<themekey>LSI</themekey>
+				<themekey>Cadastral</themekey>
+				<themekey>Township</themekey>
+				<themekey>Range</themekey>
+				<themekey>LSIS</themekey>
+				<themekey>Land Survey Information System</themekey>
+			</theme>
+			<theme>
+				<themekt>BLM-State</themekt>
+				<themekey>Alabama</themekey>
+				<themekey>Alaska</themekey>
+				<themekey>Arizona</themekey>
+				<themekey>Arkansas</themekey>
+				<themekey>California</themekey>
+				<themekey>Colorado</themekey>
+				<themekey>Florida</themekey>
+				<themekey>Idaho</themekey>
+				<themekey>Illinois</themekey>
+				<themekey>Indiana</themekey>
+				<themekey>Kansas</themekey>
+				<themekey>Michigan</themekey>
+				<themekey>Minnesota</themekey>
+				<themekey>Mississippi</themekey>
+				<themekey>Montana</themekey>
+				<themekey>Nebraska</themekey>
+				<themekey>Ohio</themekey>
+				<themekey>Oklahoma</themekey>
+				<themekey>Oregon</themekey>
+				<themekey>South Dakota</themekey>
+				<themekey>Utah</themekey>
+				<themekey>Washington</themekey>
+				<themekey>Wisconsin</themekey>
+				<themekey>Wyoming</themekey>
+			</theme>
+			<theme>
+				<themekt>BLM-Theme</themekt>
+				<themekey>Cadastral</themekey>
+			</theme>
+			<place>
+				<placekt>None</placekt>
+				<placekey>Contiguous US</placekey>
+			</place>
+		</keywords>
+		<accconst>None</accconst>
+		<useconst>The geographic coordinates and their associated products are NOT legal land survey records. The coordinates can NOT be used as a substitute for a legal land survey. They can be used for record keeping, mapping, graphics and planning purposes only. No warranty is made by the Bureau of Land Management for use of the data for purposes not intended by BLM. 
+
+The Alternate Source data hosted by the LSIS website comes from several different US Agencies, and is collected at different levels of government including County, State and Federal. Due to the different sources of data housed within the Alternate Source Layers, metadata for each source of data will be listed. In order to select the correct metadata, please use the alternate source information found in the ALTSRCNM field. Then follow the link for that sources metadata listed at the bottom of this file.</useconst>
+		<ptcontac>
+			<cntinfo>
+				<cntperp>
+					<cntper>Regina LeFort</cntper>
+					<cntorg>Bureau of Land Management</cntorg>
+				</cntperp>
+				<cntpos>L&amp;RPO GCDB Lead</cntpos>
+				<cntaddr>
+					<addrtype>mailing address</addrtype>
+					<address>P.O. Box 25047</address>
+					<address>Mail Stop: WO - 330D (DFC)</address>
+					<address>Building 40, Denver Federal Center</address>
+					<city>Denver</city>
+					<state>Colorado</state>
+					<postal>80225-0047</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(303) 236-0951</cntvoice>
+				<cntfax>(303) 236-6691</cntfax>
+				<cntemail>regina_lefort@blm.gov</cntemail>
+				<cntinst>For information about the data content, please contact the Alternate Source Data Contact, listed at: http://www.lsi.blm.gov/metadata/default.htm
+For information directly relating to metadata, please contact Regina LeFort at regina.lefort@blm.gov</cntinst>
+			</cntinfo>
+		</ptcontac>
+		<native></native>
+		<natvform Sync="TRUE">Shapefile</natvform></idinfo>
+	<dataqual>
+		<attracc>
+		</attracc>
+		<logic>The data set is topologically structured with nodes at all intersections.  Labels representing the legal land description are assigned to each land unit.</logic>
+		<posacc>
+			<horizpa>
+			</horizpa>
+		</posacc>
+		<lineage>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>Bureau of Land Management</origin>
+						<pubdate>20020930</pubdate>
+						<title>Land Survey Information System (LSIS)</title>
+						<geoform>tabular digital data</geoform>
+						<pubinfo>
+							<pubplace>Denver, Colorado</pubplace>
+							<publish>Bureau of Land Management</publish>
+						</pubinfo>
+					</citeinfo>
+				</srccite>
+				<typesrc>online</typesrc>
+				<srctime>
+					<timeinfo>
+						<rngdates>
+							<begdate>18490303</begdate>
+							<enddate>present</enddate>
+						</rngdates>
+					</timeinfo>
+					<srccurr>ground condition</srccurr>
+				</srctime>
+				<srccitea>BLM</srccitea>
+				<srccontr>Survey data in the form of official (microfilm, CD, other) survey and BLM, abstracted into a vector digital format.</srccontr>
+			</srcinfo>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>U.S. Forest Service</origin>
+						<pubdate>19980601</pubdate>
+						<title>Automated Lands Project (ALP)</title>
+						<geoform>tabular digital data</geoform>
+						<pubinfo>
+							<pubplace>Washington, D.C.</pubplace>
+							<publish>U.S. Forest Service</publish>
+						</pubinfo>
+					</citeinfo>
+				</srccite>
+				<typesrc>disc</typesrc>
+				<srctime>
+					<timeinfo>
+						<rngdates>
+							<begdate>19980601</begdate>
+							<enddate>present</enddate>
+						</rngdates>
+					</timeinfo>
+					<srccurr>ground condition</srccurr>
+				</srctime>
+				<srccitea>USFS</srccitea>
+				<srccontr>Survey and control data from the Cartographic Feature File (CFF) data set.</srccontr>
+			</srcinfo>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>U.S Geological Survey</origin>
+						<pubdate>1931</pubdate>
+						<title>USGS standard topological quadrangles</title>
+						<geoform>tabular digital data</geoform>
+						<pubinfo>
+							<pubplace>Denver, Colorado</pubplace>
+							<publish>U.S. Geological Survey</publish>
+						</pubinfo>
+					</citeinfo>
+				</srccite>
+				<typesrc>disc</typesrc>
+				<srctime>
+					<timeinfo>
+						<rngdates>
+							<begdate>1931</begdate>
+							<enddate>present</enddate>
+						</rngdates>
+					</timeinfo>
+					<srccurr>ground condition</srccurr>
+				</srctime>
+				<srccitea>USGS</srccitea>
+				<srccontr>Digitized control data from standard topological quadrangle sheets.</srccontr>
+			</srcinfo>
+			<srcinfo>
+				<srccite>
+					<citeinfo>
+						<origin>National Geodetic Survey</origin>
+						<pubdate>20000101</pubdate>
+						<title>Official Control Station Sheets</title>
+						<geoform>tabular digital data</geoform>
+						<pubinfo>
+							<pubplace>Silver Springs, Maryland</pubplace>
+							<publish>National Geodetic Survey</publish>
+						</pubinfo>
+					</citeinfo>
+				</srccite>
+				<typesrc>disc</typesrc>
+				<srctime>
+					<timeinfo>
+						<rngdates>
+							<begdate>19010101</begdate>
+							<enddate>present</enddate>
+						</rngdates>
+					</timeinfo>
+					<srccurr>ground condition</srccurr>
+				</srctime>
+				<srccitea>NGS</srccitea>
+				<srccontr>Survey control data from the official control station sheets (CBN, FBN, CORS).</srccontr>
+			</srcinfo>
+			<procstep>
+				<procdesc>Metadata imported.</procdesc>
+				<srcused>C:\WorkSpace\Metadata\alt_coordmeas.shp.xml</srcused>
+			</procstep>
+			<procstep>
+				<procdesc>Metadata imported.</procdesc>
+				<srcused>C:\WorkSpace\Metadata\alt_coords.shp.xml</srcused>
+			</procstep>
+			<procstep>
+				<procdesc>Metadata imported.</procdesc>
+				<srcused>C:\WorkSpace\Metadata\alt_first.shp.xml</srcused>
+			</procstep>
+			<procstep><procdesc Sync="TRUE">Dataset copied.</procdesc><srcused Sync="TRUE">C:\Dropbox\GIS PalEON\Illinois\Illinois Source Files\IL_PLSS\ILTwnshp</srcused><procdate Sync="TRUE">20120607</procdate><proctime Sync="TRUE">10170800</proctime></procstep></lineage>
+	</dataqual>
+	<spdoinfo>
+		<direct>Vector</direct>
+		<ptvctinf><esriterm Name="IL_Mixed1_Aggregate"><efeatyp Sync="TRUE">Simple</efeatyp><efeageom code="4" Sync="TRUE"></efeageom><esritopo Sync="TRUE">FALSE</esritopo><efeacnt Sync="TRUE">0</efeacnt><spindex Sync="TRUE">FALSE</spindex><linrefer Sync="TRUE">FALSE</linrefer></esriterm></ptvctinf></spdoinfo>
+	<spref>
+		<horizsys>
+			<geodetic>
+				<horizdn>North American Datum of 1983</horizdn>
+				<ellips>Geodetic Reference System 80</ellips>
+				<semiaxis>6378137.000000</semiaxis>
+				<denflat>298.257222</denflat>
+			</geodetic>
+			<cordsysn><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn></cordsysn></horizsys>
+		<vertdef>
+			<altsys>
+				<altres>1.000000</altres>
+				<altenc>Explicit elevation coordinate included with horizontal coordinates</altenc>
+			</altsys>
+		</vertdef>
+	</spref>
+	<eainfo>
+		<detailed Name="IL_Mixed1_Aggregate">
+			<enttyp>
+				<enttypl>
+alt_twnshp</enttypl>
+				<enttypd>Alternate Source Township Layer</enttypd>
+				<enttypds>ArcSDE</enttypds>
+				<enttypt Sync="TRUE">Feature Class</enttypt><enttypc Sync="TRUE">0</enttypc></enttyp>
+			<attr><attrlabl Sync="TRUE">FID</attrlabl><attalias Sync="TRUE">FID</attalias><attrtype Sync="TRUE">OID</attrtype><attwidth Sync="TRUE">4</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale><attrdef Sync="TRUE">Internal feature number.</attrdef><attrdefs Sync="TRUE">ESRI</attrdefs><attrdomv><udom Sync="TRUE">Sequential unique whole numbers that are automatically generated.</udom></attrdomv></attr><attr>
+				<attrlabl>shape</attrlabl>
+				<attrdef>Feature geometry.</attrdef>
+				<attrdefs>ESRI</attrdefs>
+				<attrdomv>
+					<udom>Coordinates defining the features.</udom>
+				</attrdomv>
+				<attalias Sync="TRUE">Shape</attalias><attrtype Sync="TRUE">Geometry</attrtype><attwidth Sync="TRUE">0</attwidth><atprecis Sync="TRUE">0</atprecis><attscale Sync="TRUE">0</attscale></attr>
+			<attr><attrlabl Sync="TRUE">Id</attrlabl><attalias Sync="TRUE">Id</attalias><attrtype Sync="TRUE">Integer</attrtype><attwidth Sync="TRUE">6</attwidth><atprecis Sync="TRUE">6</atprecis><attscale Sync="TRUE">0</attscale></attr></detailed>
+		<overview>
+			<eaover>The LSIS Alternate Source Township Layer (ALT_TWNSHP) contains PLSS Township polygons</eaover>
+			<eadetcit>U.S Department of the Interior, Bureau of Land Management, LSIS Database Description Document other supporting documentation. Internet versions are available at: www.blm.gov/gcdb/standards/index.htm</eadetcit>
+		</overview>
+	</eainfo>
+	<distinfo>
+		<distrib>
+			<cntinfo>
+				<cntperp>
+					<cntper>Regina LeFort</cntper>
+					<cntorg>Bureau of Land Management</cntorg>
+				</cntperp>
+				<cntpos>L&amp;RPO GCDB Lead</cntpos>
+				<cntaddr>
+					<addrtype>mailing address</addrtype>
+					<address>P. O. Box 25047</address>
+					<address>WO-330D (DFC)</address>
+					<address>Building 40, Denver Federal Center</address>
+					<city>Denver</city>
+					<state>Colorado</state>
+					<postal>80225-0047</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(303) 236-0951</cntvoice>
+				<cntfax>(303) 236-6691</cntfax>
+				<cntemail>regina_lefort@blm.gov</cntemail>
+				<cntinst>For information about the data content, please contact the Alternate Source Data Contact, listed at: http://www.lsi.blm.gov/metadata/default.htm
+For information directly relating to metadata, please contact Regina LeFort at regina.lefort@blm.gov</cntinst>
+			</cntinfo>
+		</distrib>
+		<resdesc>Downloadable Data</resdesc>
+		<distliab>Although these data have been processed successfully on a computer system at the U.S Bureau of Land Management, no warranty, expressed or implied, is made by the BLM regarding the utility of the data on any other system, nor shall the act of distribution constitute any such warranty.</distliab>
+		<stdorder>
+			<digform>
+				<digtinfo>
+					<formname>ARCE</formname>
+					<transize>5</transize>
+					<dssize Sync="TRUE">1.756</dssize></digtinfo>
+				<digtopt>
+					<onlinopt>
+						<computer>
+							<networka>
+								<networkr>LSIS Download Site</networkr>
+							</networka>
+						</computer>
+						<accinstr>http://www.geocommunicator.gov/lsi/</accinstr>
+						<oncomp></oncomp>
+					</onlinopt>
+				</digtopt>
+			</digform>
+			<fees>No fees are required for downloading the data that is on-line.</fees>
+		</stdorder>
+	</distinfo>
+	<metainfo>
+		<metd>20021001</metd>
+		<metc>
+			<cntinfo>
+				<cntperp>
+					<cntper>Regina LeFort</cntper>
+					<cntorg>Bureau of Land Management</cntorg>
+				</cntperp>
+				<cntpos>L&amp;RPO GCDB Lead</cntpos>
+				<cntaddr>
+					<addrtype>mailing address</addrtype>
+					<address>P.O. Box 25047</address>
+					<address>WO - 330D (DFC)</address>
+					<address>Building 40, Denver Federal Center</address>
+					<city>Denver</city>
+					<state>Colorado</state>
+					<postal>80225-0047</postal>
+					<country>USA</country>
+				</cntaddr>
+				<cntvoice>(303) 236-0951</cntvoice>
+				<cntfax>(303) 236-6691</cntfax>
+				<cntemail>regina_lefort@blm.gov</cntemail>
+				<cntinst>For information about the data content, please contact the BLM State Office, GCDB Manager or GCDB Contact at: http://www.lsi.blm.gov/metadata/default.htm
+For information directly relating to metadata, please contact Regina LeFort at regina.lefort@blm.gov</cntinst>
+				<cntorgp><cntper>REQUIRED: The person responsible for the metadata information.</cntper><cntorg>REQUIRED: The organization responsible for the metadata information.</cntorg></cntorgp></cntinfo>
+		</metc>
+		<metstdn>FGDC Content Standards for Digital Geospatial Metadata</metstdn>
+		<metstdv>FGDC-STD-001-1998</metstdv>
+		<mettc>local time</mettc>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<metextns>
+			<onlink>http://www.esri.com/metadata/esriprof80.html</onlink>
+			<metprof>ESRI Metadata Profile</metprof>
+		</metextns>
+		<langmeta Sync="TRUE">en</langmeta></metainfo>
+	<dataIdInfo><envirDesc Sync="TRUE"> Version 6.2 (Build 9200) ; Esri ArcGIS 10.8.1.14362</envirDesc><dataLang><languageCode Sync="TRUE" value="eng"></languageCode><countryCode value="USA" Sync="TRUE"></countryCode></dataLang><idCitation><resTitle Sync="TRUE">IL_Mixed1_Aggregate</resTitle><presForm><PresFormCd Sync="TRUE" value="005"></PresFormCd></presForm></idCitation><spatRpType><SpatRepTypCd Sync="TRUE" value="001"></SpatRepTypCd></spatRpType><dataExt><geoEle><GeoBndBox esriExtentType="native"><westBL Sync="TRUE">-91.615603</westBL><eastBL Sync="TRUE">-87.460305</eastBL><northBL Sync="TRUE">42.595402</northBL><southBL Sync="TRUE">36.981585</southBL><exTypeCode Sync="TRUE">1</exTypeCode></GeoBndBox></geoEle></dataExt><geoBox esriExtentType="decdegrees"><westBL Sync="TRUE">-91.615603</westBL><eastBL Sync="TRUE">-87.460305</eastBL><northBL Sync="TRUE">42.595402</northBL><southBL Sync="TRUE">36.981585</southBL><exTypeCode Sync="TRUE">1</exTypeCode></geoBox></dataIdInfo><mdLang><languageCode Sync="TRUE" value="eng"></languageCode><countryCode value="USA" Sync="TRUE"></countryCode></mdLang><mdStanName Sync="TRUE">ISO 19115 Geographic Information - Metadata</mdStanName><mdStanVer Sync="TRUE">DIS_ESRI1.0</mdStanVer><mdChar><CharSetCd Sync="TRUE" value="006"></CharSetCd></mdChar><mdHrLv><ScopeCd Sync="TRUE" value="005"></ScopeCd></mdHrLv><mdHrLvName Sync="TRUE">dataset</mdHrLvName><distInfo><distributor><distorTran><onLineSrc><orDesc Sync="TRUE">002</orDesc><linkage Sync="TRUE">file://\\ESC-210042\C$\Dropbox\GIS PalEON\Illinois\Illinois Working\ILTwnshp.shp</linkage><protocol Sync="TRUE">Local Area Network</protocol></onLineSrc><transSize Sync="TRUE">1.756</transSize></distorTran><distorFormat><formatName Sync="TRUE">Shapefile</formatName></distorFormat></distributor><distFormat><formatName Sync="TRUE">Shapefile</formatName></distFormat><distTranOps><transSize Sync="TRUE">0.000</transSize></distTranOps></distInfo><refSysInfo><RefSystem><refSysID><identCode Sync="TRUE" code="3175">GCS_North_American_1983</identCode><idCodeSpace Sync="TRUE">EPSG</idCodeSpace><idVersion Sync="TRUE">6.12(9.3.0.0)</idVersion></refSysID></RefSystem></refSysInfo><spatRepInfo><VectSpatRep><geometObjs Name="IL_Mixed1_Aggregate"><geoObjTyp><GeoObjTypCd value="002" Sync="TRUE"></GeoObjTypCd></geoObjTyp><geoObjCnt Sync="TRUE">0</geoObjCnt></geometObjs><topLvl><TopoLevCd value="001" Sync="TRUE"></TopoLevCd></topLvl></VectSpatRep></spatRepInfo><Esri><SyncDate>20230406</SyncDate><SyncTime>16281800</SyncTime><ModDate>20230406</ModDate><ModTime>16281800</ModTime><CreaDate>20220613</CreaDate><CreaTime>16075000</CreaTime><SyncOnce>FALSE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files (x86)\arcgis\desktop10.1\ArcToolbox\Toolboxes\Data Management Tools.tbx\DefineProjection" Date="20140630" Time="154547">DefineProjection "IL township status" PROJCS['NAD_1927_UTM_Zone_16N',GEOGCS['GCS_North_American_1927',DATUM['D_North_American_1927',SPHEROID['Clarke_1866',6378206.4,294.9786982]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Transverse_Mercator'],PARAMETER['False_Easting',500000.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-87.0],PARAMETER['Scale_Factor',0.9996],PARAMETER['Latitude_Of_Origin',0.0],UNIT['Meter',1.0]]</Process><Process ToolSource="c:\program files (x86)\arcgis\desktop10.2\ArcToolbox\Toolboxes\Data Management Tools.tbx\CalculateField" Date="20150129" Time="143726">CalculateField "IL township status" TWNRNGPM "[label] &amp; [primer]" VB #</Process><Process ToolSource="c:\program files (x86)\arcgis\desktop10.8\ArcToolbox\Toolboxes\Cartography Tools.tbx\AggregatePolygons" Date="20230406" Time="162822">AggregatePolygons IL_Mixed1 "D:\Management Areas\IL_Mixed1_Aggregate.shp" "5 Meters" "0 SquareMeters" "0 SquareMeters" NON_ORTHOGONAL # "D:\Management Areas\IL_Mixed1_Aggregate_Tbl"</Process></lineage><itemProps><itemLocation><linkage Sync="TRUE">file://\\ESC-PALEOLAB-1\D$\Management Areas\IL_Mixed1_Aggregate.shp</linkage><protocol Sync="TRUE">Local Area Network</protocol></itemLocation><itemName Sync="TRUE">IL_Mixed1_Aggregate</itemName><imsContentType Sync="TRUE">002</imsContentType><itemSize Sync="TRUE">0.000</itemSize></itemProps><copyHistory><copy source="C:\Users\jmurray7\Dropbox\GIS PalEON\Illinois\Illinois Working\ILTwnshp" dest="\\ESC303018\C$\Users\jmurray7\Dropbox\GIS PalEON\Illinois Projected\ILTwnshp" date="20150213" time="13133400"></copy></copyHistory><coordRef><type Sync="TRUE">Projected</type><geogcsn Sync="TRUE">GCS_North_American_1983</geogcsn><csUnits Sync="TRUE">Linear Unit: Meter (1.000000)</csUnits><projcsn Sync="TRUE">NAD_1983_Great_Lakes_and_St_Lawrence_Albers</projcsn><peXml Sync="TRUE">&lt;ProjectedCoordinateSystem xsi:type='typens:ProjectedCoordinateSystem' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:typens='http://www.esri.com/schemas/ArcGIS/10.8'&gt;&lt;WKT&gt;PROJCS[&amp;quot;NAD_1983_Great_Lakes_and_St_Lawrence_Albers&amp;quot;,GEOGCS[&amp;quot;GCS_North_American_1983&amp;quot;,DATUM[&amp;quot;D_North_American_1983&amp;quot;,SPHEROID[&amp;quot;GRS_1980&amp;quot;,6378137.0,298.257222101]],PRIMEM[&amp;quot;Greenwich&amp;quot;,0.0],UNIT[&amp;quot;Degree&amp;quot;,0.0174532925199433]],PROJECTION[&amp;quot;Albers&amp;quot;],PARAMETER[&amp;quot;False_Easting&amp;quot;,1000000.0],PARAMETER[&amp;quot;False_Northing&amp;quot;,1000000.0],PARAMETER[&amp;quot;Central_Meridian&amp;quot;,-83.248627],PARAMETER[&amp;quot;Standard_Parallel_1&amp;quot;,42.122774],PARAMETER[&amp;quot;Standard_Parallel_2&amp;quot;,49.01518],PARAMETER[&amp;quot;Latitude_Of_Origin&amp;quot;,45.568977],UNIT[&amp;quot;Meter&amp;quot;,1.0],AUTHORITY[&amp;quot;EPSG&amp;quot;,3175]]&lt;/WKT&gt;&lt;XOrigin&gt;-14305800&lt;/XOrigin&gt;&lt;YOrigin&gt;-8042400&lt;/YOrigin&gt;&lt;XYScale&gt;294241374.33982509&lt;/XYScale&gt;&lt;ZOrigin&gt;-100000&lt;/ZOrigin&gt;&lt;ZScale&gt;10000&lt;/ZScale&gt;&lt;MOrigin&gt;-100000&lt;/MOrigin&gt;&lt;MScale&gt;10000&lt;/MScale&gt;&lt;XYTolerance&gt;0.001&lt;/XYTolerance&gt;&lt;ZTolerance&gt;0.001&lt;/ZTolerance&gt;&lt;MTolerance&gt;0.001&lt;/MTolerance&gt;&lt;HighPrecision&gt;true&lt;/HighPrecision&gt;&lt;WKID&gt;3175&lt;/WKID&gt;&lt;LatestWKID&gt;3175&lt;/LatestWKID&gt;&lt;/ProjectedCoordinateSystem&gt;</peXml></coordRef></DataProperties><ArcGISFormat>1.0</ArcGISFormat></Esri><mdDateSt Sync="TRUE">20230406</mdDateSt></metadata>
