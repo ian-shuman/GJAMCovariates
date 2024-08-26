@@ -241,3 +241,90 @@ data_sf |>
 
 
 
+#Plot Simplified Taxon-Lvel
+data_tx <- rbind(IL, IN, Marlin)
+data_tx<- data_tx[, c("L3_tree1", "L3_tree2", "L3_tree3", "L3_tree4", "x", "y")]
+taxa <- c("Oak", "Hickory", "Beech", "Maple", "No tree")
+data_tx <- data_tx %>%
+  mutate(L3_tree1 = if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
+for (i in 1:nrow(data_tx)){
+  if (is.na(data_tx[i,1]) == T){
+    data_tx$L3_tree1[i] <- data_tx$L3_tree2[i]
+  }}
+data_tx <- data_tx %>%
+  mutate(L3_tree1 = if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
+for (i in 1:nrow(data_tx)){
+  if (is.na(data_tx[i,1]) == T){
+    data_tx$L3_tree1[i] <- data_tx$L3_tree3[i]
+  }}
+data_tx <- data_tx %>%
+  mutate(L3_tree1 = if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
+for (i in 1:nrow(data_tx)){
+  if (is.na(data_tx[i,1]) == T){
+    data_tx$L3_tree1[i] <- data_tx$L3_tree4[i]
+  }}
+data_tx <- data_tx %>%
+  mutate(L3_tree1 = if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
+data_tx <- data_tx %>%
+  filter(!is.na(L3_tree1))
+
+data_tx <- sf::st_as_sf(data_tx, coords = c('x', 'y'))
+# Add current CRS
+sf::st_crs(data_tx) <- 'EPSG:3175'
+# Convert to new CRS
+data_tx <- sf::st_transform(data_tx, crs = 'EPSG:4326')
+data_tx$L3_tree1 <- factor(data_tx$L3_tree1, levels=c("No tree", "Oak", "Hickory", "Beech", "Maple"))
+
+#Plot Without Management Areas
+data_tx |>
+  ggplot2::ggplot() +
+  ggplot2::geom_sf(ggplot2::aes(color = L3_tree1), shape = '.', alpha = 0.7) +
+  ggplot2::scale_color_manual(values = c('No tree' = '#bb5566', 'Oak' = '#ddaa34', 'Hickory' = '#ecd08f', 'Beech' = '#4c7cac', 'Maple' = '#005f5f')) +
+  ggplot2::labs(color = 'Taxon') +
+  ggplot2::guides(color = ggplot2::guide_legend(override.aes = list(shape = 16, size = 7))) +
+  ggplot2::theme_void() +
+  ggplot2::geom_sf(data = states, color = 'black', fill = NA, linewidth = 1) +
+  ggplot2::coord_sf(crs = 'EPSG:4326') +
+  ggplot2::theme(plot.title = ggplot2::element_text(size = 16, face = 'bold', hjust = 0.5),
+                 legend.title = ggplot2::element_text(size = 12),
+                 legend.text = ggplot2::element_text(size = 12)) +
+  ggplot2::ggtitle('Taxon distributions')
+
+#Plot With All Management Areas
+data_tx |>
+  ggplot2::ggplot() +
+  ggplot2::geom_sf(ggplot2::aes(color = L3_tree1), shape = '.', alpha = 0.7) +
+  ggplot2::scale_color_manual(values = c('No tree' = '#bb5566', 'Oak' = '#ddaa34', 'Hickory' = '#ecd08f', 'Beech' = '#4c7cac', 'Maple' = '#005f5f')) +
+  ggplot2::labs(color = 'Taxon') +
+  ggplot2::guides(color = ggplot2::guide_legend(override.aes = list(shape = 16, size = 7))) +
+  ggplot2::theme_void() +
+  ggplot2::geom_sf(data = states, color = 'black', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_Forest1, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_Mixed1, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_Prairie1, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_Prairie2, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_Prairie3, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_River1, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_River2, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_Shawnee, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_Small1, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_Small2, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_Small3, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IL_StudyArea, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IN_Forest1, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IN_Forest2, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IN_Forest3, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IN_Forest4, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IN_HoosierNorth, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IN_HoosierSouth, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IN_Indianapolis, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IN_NE, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IN_Prairie1, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::geom_sf(data = IN_Dunes, color = 'blue', fill = NA, linewidth = 1) +
+  ggplot2::coord_sf(crs = 'EPSG:4326') +
+  ggplot2::theme(plot.title = ggplot2::element_text(size = 20, face = 'bold', hjust = 0.5),
+                 legend.title = ggplot2::element_text(size = 12),
+                 legend.text = ggplot2::element_text(size = 12)) +
+  ggplot2::ggtitle('Taxon distributions')
+
+
