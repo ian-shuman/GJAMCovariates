@@ -2,6 +2,7 @@
 rm(list = ls())
 setwd("/Volumes/Seagate Exp/Full PLS Data 2.1")
 library(sf)
+library(dplyr)
 
 #Load and merge datasets downloaded from https://paleon.geography.wisc.edu/doku.php/data_and_products:settlement_vegetation
 IL <- read.csv("ndilpls_v2.1.csv")
@@ -246,27 +247,27 @@ data_tx <- rbind(IL, IN, Marlin)
 data_tx<- data_tx[, c("L3_tree1", "L3_tree2", "L3_tree3", "L3_tree4", "x", "y")]
 taxa <- c("Oak", "Hickory", "Beech", "Maple", "No tree")
 data_tx <- data_tx %>%
-  mutate(L3_tree1 = if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
+  dplyr::mutate(L3_tree1 = dplyr::if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
 for (i in 1:nrow(data_tx)){
   if (is.na(data_tx[i,1]) == T){
     data_tx$L3_tree1[i] <- data_tx$L3_tree2[i]
   }}
 data_tx <- data_tx %>%
-  mutate(L3_tree1 = if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
+  dplyr::mutate(L3_tree1 = dplyr::if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
 for (i in 1:nrow(data_tx)){
   if (is.na(data_tx[i,1]) == T){
     data_tx$L3_tree1[i] <- data_tx$L3_tree3[i]
   }}
 data_tx <- data_tx %>%
-  mutate(L3_tree1 = if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
+  dplyr::mutate(L3_tree1 = dplyr::if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
 for (i in 1:nrow(data_tx)){
   if (is.na(data_tx[i,1]) == T){
     data_tx$L3_tree1[i] <- data_tx$L3_tree4[i]
   }}
 data_tx <- data_tx %>%
-  mutate(L3_tree1 = if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
+  dplyr::mutate(L3_tree1 = dplyr::if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
 data_tx <- data_tx %>%
-  filter(!is.na(L3_tree1))
+  dplyr::filter(!is.na(L3_tree1))
 
 data_tx <- sf::st_as_sf(data_tx, coords = c('x', 'y'))
 # Add current CRS
@@ -326,5 +327,4 @@ data_tx |>
                  legend.title = ggplot2::element_text(size = 12),
                  legend.text = ggplot2::element_text(size = 12)) +
   ggplot2::ggtitle('Taxon distributions')
-
 
