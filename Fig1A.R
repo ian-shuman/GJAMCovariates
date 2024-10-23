@@ -248,20 +248,20 @@ data_sf |>
 data_tx <- rbind(IL, IN, Marlin)
 data_tx<- data_tx[, c("L3_tree1", "L3_tree2", "L3_tree3", "L3_tree4", "x", "y")]
 taxa <- c("Oak", "Hickory", "Beech", "Maple", "No tree")
-data_tx <- data_tx %>%
-  dplyr::mutate(L3_tree1 = dplyr::if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
+#data_tx <- data_tx %>% #commented lines are for if you want to preferentially plot all oaks and hickories
+  #dplyr::mutate(L3_tree1 = dplyr::if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
 for (i in 1:nrow(data_tx)){
   if (is.na(data_tx[i,1]) == T){
     data_tx$L3_tree1[i] <- data_tx$L3_tree2[i]
   }}
-data_tx <- data_tx %>%
-  dplyr::mutate(L3_tree1 = dplyr::if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
+#data_tx <- data_tx %>%
+  #dplyr::mutate(L3_tree1 = dplyr::if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
 for (i in 1:nrow(data_tx)){
   if (is.na(data_tx[i,1]) == T){
     data_tx$L3_tree1[i] <- data_tx$L3_tree3[i]
   }}
-data_tx <- data_tx %>%
-  dplyr::mutate(L3_tree1 = dplyr::if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
+#data_tx <- data_tx %>%
+  #dplyr::mutate(L3_tree1 = dplyr::if_else(L3_tree1 %in% taxa, L3_tree1, NA_character_))
 for (i in 1:nrow(data_tx)){
   if (is.na(data_tx[i,1]) == T){
     data_tx$L3_tree1[i] <- data_tx$L3_tree4[i]
@@ -294,7 +294,7 @@ data_tx |>
   ggplot2::ggtitle('Taxon distributions')
 
 #Plot With All Management Areas
-fig1a <- data_tx |>
+fig1a_new <- data_tx |>
   ggplot2::ggplot() +
   ggplot2::geom_sf(ggplot2::aes(color = L3_tree1), shape = '.', alpha = 0.7) +
   ggplot2::scale_color_manual(values = c('No tree' = '#bb5566', 'Oak' = '#ddaa34', 'Hickory' = '#ecd08f', 'Beech' = '#4c7cac', 'Maple' = '#005f5f', 'Other forest taxa' = '#002a53')) +
@@ -329,5 +329,5 @@ fig1a <- data_tx |>
                  legend.title = ggplot2::element_text(size = 12),
                  legend.text = ggplot2::element_text(size = 12)) +
   ggplot2::ggtitle('Taxon distributions')
-fig1a
-ggplot2::ggsave(filename = "~/Downloads/gjamfinal/Figure1A.svg", plot = fig1a, device = "svg", width = 1961, units = "px", dpi = 300)
+fig1a_new
+ggplot2::ggsave(filename = "~/Downloads/gjamfinal/Figure1A.svg", plot = fig1a_new, device = "svg", width = 1961, units = "px", dpi = 300)
